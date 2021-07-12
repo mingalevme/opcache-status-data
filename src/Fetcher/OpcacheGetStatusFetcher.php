@@ -17,7 +17,9 @@ class OpcacheGetStatusFetcher implements Fetcher
     {
         $info = opcache_get_status(false);
         if (false === $info) {
+            // @codeCoverageIgnoreStart
             throw new RuntimeException('Error while getting opcache status');
+            // @codeCoverageIgnoreEnd
         }
         return new OpcacheStatusInfo($info);
     }

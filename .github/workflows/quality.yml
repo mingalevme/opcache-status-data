@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  quality:
 
     runs-on: ubuntu-latest
 
@@ -47,7 +47,7 @@ jobs:
     - name: Run Code Sniffer
       run: composer run-script phpcs
 
-    - name: Run Code Sniffer
+    - name: Codecov
       uses: codecov/codecov-action@v1
       env:
         CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"

@@ -13,9 +13,9 @@ composer require mingalevme/opcache-status-info
 # some bootstrap file
 
 use Mingalevme\OpcacheStatusInfo\Fetcher as OpcacheStatusInfoFetcher;
-use Mingalevme\OpcacheStatusInfo\Fetcher\OpcacheGetInfoFetcher;
+use Mingalevme\OpcacheStatusInfo\Fetcher\OpcacheGetStatusFetcher;
 
-$fetcher = new OpcacheGetInfoFetcher();
+$fetcher = new OpcacheGetStatusFetcher();
 
 $someDIContainer->bind(OpcacheStatusInfoFetcher::class, function() use ($fetcher): OpcacheStatusInfoFetcher {
     return $fetcher;

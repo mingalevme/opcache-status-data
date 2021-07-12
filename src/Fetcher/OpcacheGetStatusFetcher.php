@@ -11,7 +11,7 @@ use RuntimeException;
 /**
  * Real fetcher, requires opcache extension
  */
-class OpcacheGetInfoFetcher implements Fetcher
+class OpcacheGetStatusFetcher implements Fetcher
 {
     public function fetch(): OpcacheStatusInfo
     {

@@ -49,5 +49,7 @@ jobs:
 
     - name: Run Code Sniffer
       uses: codecov/codecov-action@v1
+      env:
+        CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
       with:
         files: ./coverage.xml

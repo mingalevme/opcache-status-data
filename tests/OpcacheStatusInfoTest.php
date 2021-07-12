@@ -38,6 +38,11 @@ class OpcacheStatusInfoTest extends TestCase
         self::assertSame(1626072691, $opcacheStatusInfo->getOpcacheStartTime());
         self::assertSame(0, $opcacheStatusInfo->getOpcacheLastRestartTime());
         self::assertSame(344, $opcacheStatusInfo->getOpcacheMisses());
+        self::assertSame(1, $opcacheStatusInfo->getOpcacheOomRestarts());
+        self::assertSame(1, $opcacheStatusInfo->getOpcacheHashRestarts());
+        self::assertSame(1, $opcacheStatusInfo->getOpcacheManualRestarts());
+        self::assertSame(1, $opcacheStatusInfo->getOpcacheBlacklistMisses());
+        self::assertSame(0.01, $opcacheStatusInfo->getOpcacheBlacklistMissRatio());
         self::assertLessThan(1.0E-6, abs($opcacheStatusInfo->getOpcacheHitRate() - self::OPCACHE_HIT_RATE / 100.0));
         // jit
         self::assertSame(true, $opcacheStatusInfo->getJitIsEnabled());
@@ -97,12 +102,12 @@ class OpcacheStatusInfoTest extends TestCase
                 'hits' => 5202,
                 'start_time' => 1626072691,
                 'last_restart_time' => 0,
-                'oom_restarts' => 0,
-                'hash_restarts' => 0,
-                'manual_restarts' => 0,
+                'oom_restarts' => 1,
+                'hash_restarts' => 1,
+                'manual_restarts' => 1,
                 'misses' => 344,
-                'blacklist_misses' => 0,
-                'blacklist_miss_ratio' => 0.0,
+                'blacklist_misses' => 1,
+                'blacklist_miss_ratio' => 1.0,
                 'opcache_hit_rate' => self::OPCACHE_HIT_RATE,
             ],
             'jit' => [

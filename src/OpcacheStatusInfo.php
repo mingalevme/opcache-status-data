@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Mingalevme\OpcacheStatusInfo;
 
 use Generator;
+use Mingalevme\Tests\OpcacheStatusInfo\OpcacheStatusInfoTest;
 
 /**
  * https://stackoverflow.com/questions/23517542/what-does-zend-opcaches-num-cached-keys-statistic-mean
  * https://rtfm.co.ua/php-keshirovanie-php-skriptov-nastrojka-i-tyuning-opcache/
+ * https://help.zend.com/zend/zend-server-8/content/zendopcache_phpapi.htm
  * https://help.zend.com/zend/zend-server-8-ibmi/content/zendopcache_phpapi.htm
  *
  * @psalm-type OpcacheStatusScriptArray=array{
@@ -19,6 +21,8 @@ use Generator;
  *      last_used_timestamp: int,
  *      timestamp: int,
  *  }
+ *
+ * @see OpcacheStatusInfoTest
  */
 class OpcacheStatusInfo
 {
@@ -126,9 +130,34 @@ class OpcacheStatusInfo
         return intval($this->opcacheStatusInfo['opcache_statistics']['last_restart_time'] ?? 0);
     }
 
+    public function getOpcacheOomRestarts(): int
+    {
+        return intval($this->opcacheStatusInfo['opcache_statistics']['oom_restarts'] ?? 0);
+    }
+
+    public function getOpcacheHashRestarts(): int
+    {
+        return intval($this->opcacheStatusInfo['opcache_statistics']['hash_restarts'] ?? 0);
+    }
+
+    public function getOpcacheManualRestarts(): int
+    {
+        return intval($this->opcacheStatusInfo['opcache_statistics']['manual_restarts'] ?? 0);
+    }
+
     public function getOpcacheMisses(): int
     {
         return intval($this->opcacheStatusInfo['opcache_statistics']['misses'] ?? 0);
+    }
+
+    public function getOpcacheBlacklistMisses(): int
+    {
+        return intval($this->opcacheStatusInfo['opcache_statistics']['blacklist_misses'] ?? 0);
+    }
+
+    public function getOpcacheBlacklistMissRatio(): float
+    {
+        return floatval($this->opcacheStatusInfo['opcache_statistics']['blacklist_miss_ratio'] ?? 0) / 100.0;
     }
 
     public function getOpcacheHitRate(): float
@@ -180,7 +209,6 @@ class OpcacheStatusInfo
     {
         if (empty($this->opcacheStatusInfo['scripts'])) {
             return;
-            // yield from [];
         }
 
         /**

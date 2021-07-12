@@ -29,8 +29,14 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Run test suite
-      run: composer run-script phpunit
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        coverage: xdebug
+
+    - name: Run PHPUnit
+      run: vendor/bin/phpunit --coverage-clover coverage.xml
 
     - name: Run Psalm
       run: composer run-script psalm
@@ -40,3 +46,8 @@ jobs:
 
     - name: Run Code Sniffer
       run: composer run-script phpcs
+
+    - name: Run Code Sniffer
+      uses: codecov/codecov-action@v1
+      with:
+        files: ./coverage.xml

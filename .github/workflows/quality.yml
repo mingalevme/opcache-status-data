@@ -33,7 +33,8 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '7.4'
-        coverage: xdebug, :opcache
+        extensions: :opcache
+        coverage: xdebug
 
     - name: Run PHPUnit
       run: vendor/bin/phpunit --coverage-clover coverage.xml

@@ -28,6 +28,11 @@
             "Mingalevme\\Tests\\OpcacheStatusInfo\\": "tests/"
         }
     },
+    "scripts": {
+        "phpunit": "phpunit",
+        "psalm": "psalm",
+        "phpstan": "phpstan analyze"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

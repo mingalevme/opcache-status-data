@@ -5,11 +5,7 @@
         <exclude name="PEAR.Commenting.FileComment.Missing"/>
         <exclude name="Generic.Files.LineLength"/>
     </rule>
-    <file>app/</file>
+    <file>src/</file>
     <arg name="extensions" value="php"/>
     <exclude-pattern>vendor</exclude-pattern>
-    <exclude-pattern>resources</exclude-pattern>
-    <exclude-pattern>database/</exclude-pattern>
-    <exclude-pattern>storage/</exclude-pattern>
-    <exclude-pattern>node_modules/</exclude-pattern>
 </ruleset>

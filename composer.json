@@ -1,5 +1,5 @@
 {
-    "name": "mingalevme/opcache-status-data",
+    "name": "mingalevme/opcache-status-info",
     "description": "PHP OPcache status information object",
     "type": "library",
     "license": "MIT",

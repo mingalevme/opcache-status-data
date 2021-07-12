@@ -31,7 +31,8 @@
     "scripts": {
         "phpunit": "phpunit",
         "psalm": "psalm",
-        "phpstan": "phpstan analyze"
+        "phpstan": "phpstan analyze",
+        "phpcs": "phpcs"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
